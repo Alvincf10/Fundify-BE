@@ -1,0 +1,13 @@
+services:
+  mongo:
+    image: mongo:8
+    container_name: finance-mongo
+    restart: unless-stopped
+    ports:
+      - "27018:27017"        # host 27018 -> container 27017
+    volumes:
+      - mongo-data:/data/db  # named volume (persist data, no permission issues)
+    command: ["--bind_ip_all", "--replSet", "rs0"]
+
+volumes:
+  mongo-data:
