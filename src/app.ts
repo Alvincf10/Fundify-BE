@@ -10,7 +10,7 @@ import swaggerUi from "swagger-ui-express";
 import membersRoute from "./routes/members.js";
 import transactionsRoute from "./routes/transactions.js";
 import poolRoute from "./routes/pool.js";
-
+import telegramWebhook from "./routes/telegram.js";
 export const app = express();
 
 app.use(cors());
@@ -24,6 +24,7 @@ app.get("/health", (_req, res) => {
 app.use("/members", membersRoute);
 app.use("/transactions", transactionsRoute);
 app.use("/pool", poolRoute);
+app.use("/telegram/webhook", telegramWebhook);
 
 // --- Swagger (contoh minimal; sesuaikan globs dengan strukturmu)
 const swaggerSpec = swaggerJsdoc({
